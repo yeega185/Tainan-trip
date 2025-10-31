@@ -1,37 +1,150 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>台南三天兩夜行程 (11/08 - 11/10)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
-    .tab-btn.active { border-color: #4f46e5; color: #4f46e5; font-weight: 600; }
-    .tab-btn { border-bottom-width: 3px; border-color: transparent; white-space: nowrap; }
-    @media (max-width: 640px) {
-      .tab-nav-container { display: flex; overflow-x: auto; justify-content: flex-start; }
-      .tab-btn { flex-shrink: 0; padding-left: 8px; padding-right: 8px; }
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
     }
+
+    .tab-btn.active {
+      border-color: #4f46e5;
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .tab-btn {
+      border-bottom-width: 3px;
+      border-color: transparent;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .tab-nav-container {
+        display: flex;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+
+      .tab-btn {
+        flex-shrink: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+
     /* 徽章（原生 CSS，避免需 Tailwind 編譯） */
-    .badge { display: inline-block; padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; }
-    .badge-free { background: #dcfce7; color: #166534; }
-    .badge-paid { background: #fef9c3; color: #854d0e; }
-    .badge-partner { background: #dbeafe; color: #1e40af; }
-    .badge-street { background: #f3f4f6; color: #374151; }
-    .badge-underground { background: #ede9fe; color: #6d28d9; }
-    .parking-box { margin-top: 0.5rem; padding: 0.75rem; background: #eef2ff; border-radius: 0.5rem; font-size: 0.875rem; color: #374151; }
-    .parking-box h4 { font-weight: 600; color: #4f46e5; margin-bottom: 0.25rem; }
-    .dev-note { font-size: 0.875rem; color: #6b7280; }
-    .toast { position: fixed; right: 1rem; bottom: 1rem; z-index: 9999; max-width: 90vw; }
-    .toast-card { background: #111827; color: #fff; padding: 12px 14px; border-radius: 10px; box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1); font-size: 14px; line-height: 1.4; }
-    .toast-actions { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
-    .btn { padding: 6px 10px; border-radius: 6px; font-size: 12px; }
-    .btn-primary { background: #2563eb; color: #fff; }
-    .btn-secondary { background: #374151; color: #fff; }
-    .copy-input { width: 100%; margin-top: 6px; color: #111827; background: #e5e7eb; border-radius: 6px; padding: 6px 8px; font-size: 12px; border: none; }
+    .badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .badge-free {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge-paid {
+      background: #fef9c3;
+      color: #854d0e;
+    }
+
+    .badge-partner {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .badge-street {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .badge-underground {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .parking-box {
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background: #eef2ff;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      color: #374151;
+    }
+
+    .parking-box h4 {
+      font-weight: 600;
+      color: #4f46e5;
+      margin-bottom: 0.25rem;
+    }
+
+    .dev-note {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    .toast {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 9999;
+      max-width: 90vw;
+    }
+
+    .toast-card {
+      background: #111827;
+      color: #fff;
+      padding: 12px 14px;
+      border-radius: 10px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .toast-actions {
+      margin-top: 8px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #374151;
+      color: #fff;
+    }
+
+    .copy-input {
+      width: 100%;
+      margin-top: 6px;
+      color: #111827;
+      background: #e5e7eb;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 12px;
+      border: none;
+    }
   </style>
 </head>
+
 <body class="bg-gray-50">
   <div class="container mx-auto max-w-5xl p-4 sm:p-8">
     <header class="text-center mb-8">
@@ -41,10 +154,18 @@
 
     <nav class="border-b border-gray-200 mb-8">
       <div class="tab-nav-container flex justify-center space-x-2 sm:space-x-6">
-        <button class="tab-btn active py-3 px-2 sm:px-4 text-sm sm:text-lg text-gray-500 hover:text-indigo-500 transition-all duration-200" data-tab="day-sat">11/08 (六)</button>
-        <button class="tab-btn py-3 px-2 sm:px-4 text-sm sm:text-lg text-gray-500 hover:text-indigo-500 transition-all duration-200" data-tab="day-sun">11/09 (日)</button>
-        <button class="tab-btn py-3 px-2 sm:px-4 text-sm sm:text-lg text-gray-500 hover:text-indigo-500 transition-all duration-200" data-tab="day-mon">11/10 (一)</button>
-        <button class="tab-btn py-3 px-2 sm:px-4 text-sm sm:text-lg text-gray-500 hover:text-indigo-500 transition-all duration-200" data-tab="overview">總覽 & 備忘</button>
+        <button
+          class="tab-btn active py-3 px-2 sm:px-4 text-sm sm:text-lg text-gray-500 hover:text-indigo-500 transition-all duration-200"
+          data-tab="day-sat">11/08 (六)</button>
+        <button
+          class="tab-btn py-3 px-2 sm:px-4 text-sm sm:text-lg text-gray-500 hover:text-indigo-500 transition-all duration-200"
+          data-tab="day-sun">11/09 (日)</button>
+        <button
+          class="tab-btn py-3 px-2 sm:px-4 text-sm sm:text-lg text-gray-500 hover:text-indigo-500 transition-all duration-200"
+          data-tab="day-mon">11/10 (一)</button>
+        <button
+          class="tab-btn py-3 px-2 sm:px-4 text-sm sm:text-lg text-gray-500 hover:text-indigo-500 transition-all duration-200"
+          data-tab="overview">總覽 & 備忘</button>
       </div>
     </nav>
 
@@ -66,9 +187,17 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">下午茶｜AIC 冰淇淋</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://maps.app.goo.gl/tA8Jjb4BvA3ScqgA8?g_st=al" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 AIC 冰淇淋（Google Maps）</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E5%AE%89%E8%B7%AF%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ 海安路地下停車場</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E5%8D%97%E4%B8%AD%E6%AD%A3%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener" class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition-all">🅿️ 中正路地下停車場</a>
+                <a href="https://maps.app.goo.gl/tA8Jjb4BvA3ScqgA8?g_st=al" target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  AIC 冰淇淋（Google Maps）</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E5%AE%89%E8%B7%AF%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4"
+                  target="_blank" rel="noopener"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  海安路地下停車場</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E5%8D%97%E4%B8%AD%E6%AD%A3%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4"
+                  target="_blank" rel="noopener"
+                  class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition-all">🅿️
+                  中正路地下停車場</a>
               </div>
               <div class="parking-box">
                 <h4>停車建議</h4>
@@ -88,7 +217,9 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">Check-in</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://www.booking.com/Share-xMEhbz" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">🏠 枕浪觀星高樓夜景房（Booking）</a>
+                <a href="https://www.booking.com/Share-xMEhbz" target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">🏠
+                  枕浪觀星高樓夜景房（Booking）</a>
               </div>
               <p class="text-sm text-gray-600">住宿資訊：此房源標示有 <strong>免費車位</strong>（以現場為準）。</p>
             </div>
@@ -102,9 +233,15 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">去貓咖</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://share.google/GDLU6t7FElRMKHKff" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 呼嚕咖啡館 x 貓中途驛站（地圖）</a>
-                <a href="https://www.utaggo.com.tw/parking-lot-info/AN0100040" target="_blank" rel="noopener" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ 新美街50巷路外</a>
-                <a href="https://www.utaggo.com.tw/parking-lot-info/AN0100116" target="_blank" rel="noopener" class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition-all">🅿️ 台灣聯通 民生場</a>
+                <a href="https://share.google/GDLU6t7FElRMKHKff" target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  呼嚕咖啡館 x 貓中途驛站（地圖）</a>
+                <a href="https://share.google/Ax0lgVI23VBeJeAcd" target="_blank" rel="noopener"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  新美街50巷路外</a>
+                <a href="https://www.utaggo.com.tw/parking-lot-info/AN0100116" target="_blank" rel="noopener"
+                  class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition-all">🅿️
+                  台灣聯通 民生場</a>
               </div>
               <div class="parking-box">
                 <h4>停車建議</h4>
@@ -115,7 +252,8 @@
               </div>
               <div class="mt-3 p-4 bg-yellow-50 rounded-lg text-sm text-gray-800">
                 <h4 class="font-semibold text-yellow-800 mb-2">貓咖注意事項</h4>
-                <p class="mb-2">您已完成預約😼 座位遲到不保留，請準時到達。到達現場請直接進入玄關告知訂位，不要自行開窗或敲打門窗（會嚇到貓狗）。玄關擁擠請分批進入；若提前到且無空位，請於門口候位區稍坐，依通知或訂位時間準時進入。</p>
+                <p class="mb-2">您已完成預約😼
+                  座位遲到不保留，請準時到達。到達現場請直接進入玄關告知訂位，不要自行開窗或敲打門窗（會嚇到貓狗）。玄關擁擠請分批進入；若提前到且無空位，請於門口候位區稍坐，依通知或訂位時間準時進入。</p>
                 <ul class="list-disc list-inside space-y-1">
                   <li>本場所全面禁菸，亦禁止在店外抽菸後再入店。</li>
                   <li>請勿噴濃烈香水／古龍水，店內勿使用精油或噴霧（貓狗對味道敏感）。</li>
@@ -131,15 +269,19 @@
           </div>
         </div>
 
-        <!-- 晚餐（指定餐廳） -->
+        <!-- 晚餐 -->
         <div class="p-5 bg-white rounded-lg shadow-lg">
           <div class="flex flex-col sm:flex-row sm:items-start">
             <div class="w-full sm:w-1/5 text-lg font-bold text-indigo-700 mb-2 sm:mb-0">晚餐</div>
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">晚餐｜Simple Plan 咖啡小酒館</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://maps.app.goo.gl/G173ZsMAq16dpf6X7?g_st=al" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 Simple Plan 咖啡小酒館（Google Maps）</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ 周邊停車（搜尋）</a>
+                <a href="https://maps.app.goo.gl/G173ZsMAq16dpf6X7?g_st=al" target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  Simple Plan 咖啡小酒館（Google Maps）</a>
+                <a href="https://share.google/Ax0lgVI23VBeJeAcd" target="_blank" rel="noopener"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  新美街50巷路外</a>
               </div>
               <div class="parking-box">
                 <h4>停車建議</h4>
@@ -151,27 +293,31 @@
             </div>
           </div>
         </div>
-        </div>
 
-        
+
       </div>
 
       <div id="day-sun" class="tab-content hidden space-y-6">
         <div class="p-5 bg-white rounded-lg shadow-lg">
           <div class="flex flex-col sm:flex-row sm:items-center">
             <div class="w-full sm:w-1/5 text-lg font-bold text-indigo-700 mb-2 sm:mb-0">早上</div>
-            <div class="w-full sm:w-4/5 text-xl font-semibold text-gray-800">早餐自理</div>
-            <p class="w-full sm:w-4/5 text-sm text-gray-600">(有需要者自行覓食/飯店周邊)</p>
+            <div class="w-full sm:w-4/5">
+              <h2 class="text-xl font-semibold text-gray-800 mb-3">早餐自理</h2>
+              <p class="w-full sm:w-4/5 text-sm text-gray-600">(有需要者自行覓食/飯店周邊)</p>
+            </div>
           </div>
         </div>
 
         <div class="p-5 bg-white rounded-lg shadow-lg">
           <div class="flex flex-col sm:flex-row sm:items-start">
-            <div class="w-full sm:w-1/5 text-lg font-bold text-indigo-700 mb-2 sm:mb-0">上午/下午</div>
+            <div class="w-full sm:w-1/5 text-lg font-bold text-indigo-700 mb-2 sm:mb-0">上午</div>
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">去看樂高</h2>
               <div class="flex flex-wrap gap-3 mb-2">
-                <a href="https://www.google.com/maps/search/?api=1&query=%E6%A8%82%E9%AB%98%E6%8E%88%E6%AC%8A%E5%B0%88%E8%B3%A3%E5%BA%97%E5%8D%97%E7%B4%85%E5%BA%97%20%E5%8F%B0%E5%8D%97%E5%8D%97%E7%B4%85%E8%B3%BC%E7%89%A9%E4%B8%AD%E5%BF%83A2%E9%A4%A81%E6%A8%93" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 樂高授權專賣店 南紡店（地圖）</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=%E6%A8%82%E9%AB%98%E6%8E%88%E6%AC%8A%E5%B0%88%E8%B3%A3%E5%BA%97%E5%8D%97%E7%B4%85%E5%BA%97%20%E5%8F%B0%E5%8D%97%E5%8D%97%E7%B4%85%E8%B3%BC%E7%89%A9%E4%B8%AD%E5%BF%83A2%E9%A4%A81%E6%A8%93"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  樂高授權專賣店 南紡店（地圖）</a>
               </div>
               <p class="text-sm text-gray-600">地址：台南「南紡購物中心 A2 館」1 樓（館內停車場便利）。</p>
               <div class="parking-box">
@@ -198,14 +344,23 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">逛街 & 看蛋糕</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://share.google/zikTvxmf4tUxm6Lt9" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 WULI Basques 巴斯克專賣</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E5%AE%89%E8%B7%AF%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ 海安路地下停車場</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E5%8D%97%E4%B8%AD%E6%AD%A3%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener" class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition-all">🅿️ 中正路地下停車場</a>
+                <a href="https://share.google/zikTvxmf4tUxm6Lt9" target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  WULI Basques 巴斯克專賣</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E5%AE%89%E8%B7%AF%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4"
+                  target="_blank" rel="noopener"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  海安路地下停車場</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=%E8%87%BA%E5%8D%97%E4%B8%AD%E6%AD%A3%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4"
+                  target="_blank" rel="noopener"
+                  class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-200 transition-all">🅿️
+                  中正路地下停車場</a>
               </div>
               <div class="parking-box">
                 <h4>停車建議</h4>
                 <ul class="list-disc list-inside space-y-1">
-                  <li>WULI 與 AIC 同為 <span class="badge badge-partner">國華街/西市場</span> 商圈，建議統一停 <span class="badge badge-underground">海安地下</span> 後步行串點。</li>
+                  <li>WULI 與 AIC 同為 <span class="badge badge-partner">國華街/西市場</span> 商圈，建議統一停 <span
+                      class="badge badge-underground">海安地下</span> 後步行串點。</li>
                   <li class="dev-note">費率參考：每小時約 $30–40；尖峰時段提早進場較好找位。</li>
                 </ul>
               </div>
@@ -219,13 +374,20 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">看日落 (推薦: 觀夕平台)</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://www.google.com/search?q=https://www.google.com/maps/search/%3Fapi%3D1%26query%3D%E5%8F%B0%E5%8D%97%2B%E8%A7%82%E5%A4%95%E5%B9%B3%E5%8F%B0" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 觀夕平台</a>
-                <a href="https://www.google.com/search?q=https://www.google.com/maps/search/%25E8%25A7%2580%25E5%25A4%2595%25E5%25B9%25B3%25E5%258F%25B0%25E5%2581%259C%25E8%25BB%258A%25E5%25A0%25B4" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ 免費停車場</a>
+                <a href="https://www.google.com/search?q=https://www.google.com/maps/search/%3Fapi%3D1%26query%3D%E5%8F%B0%E5%8D%97%2B%E8%A7%82%E5%A4%95%E5%B9%B3%E5%8F%B0"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  觀夕平台</a>
+                <a href="https://www.google.com/search?q=https://www.google.com/maps/search/%25E8%25A7%2580%25E5%25A4%2595%25E5%25B9%25B3%25E5%258F%25B0%25E5%2581%259C%25E8%25BB%258A%25E5%25A0%25B4"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  免費停車場</a>
               </div>
               <div class="parking-box">
                 <h4>停車建議</h4>
                 <ul class="list-disc list-inside space-y-1">
-                  <li>優先停觀夕平台周邊 <span class="badge badge-free">免費</span> 或 <span class="badge badge-paid">付費</span> 場。</li>
+                  <li>優先停觀夕平台周邊 <span class="badge badge-free">免費</span> 或 <span class="badge badge-paid">付費</span> 場。
+                  </li>
                   <li>日落尖峰提前抵達；若滿位，改停較遠處再步行。</li>
                   <li>離場尖峰可延後 20–30 分鐘再開車，避開車潮。</li>
                 </ul>
@@ -240,8 +402,12 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">花園夜市</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://www.google.com/search?q=%E5%8F%B0%E5%8D%97%E8%8A%B1%E5%9C%92%E5%A4%9C%E5%B8%82+Google+Maps" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 Google Maps</a>
-                <span class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">🅿️ 專用停車場</span>
+                <a href="https://www.google.com/search?q=%E5%8F%B0%E5%8D%97%E8%8A%B1%E5%9C%92%E5%A4%9C%E5%B8%82+Google+Maps"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  Google Maps</a>
+                <span class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">🅿️
+                  專用停車場</span>
               </div>
               <div class="parking-box">
                 <h4>停車建議</h4>
@@ -264,8 +430,13 @@
               <h2 class="text-xl font-semibold text-gray-800 mb-1">好樂迪 KTV（成功店）</h2>
               <p class="text-sm text-gray-600 mb-3">行程：<strong>花園夜市 → KTV</strong>（夜市吃完直接前往）。</p>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://share.google/b0QdE9nw07PkGjhkg" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 成功店（Google Maps）</a>
-                <a href="https://data.zhupiter.com/oddt/16948142/%E6%88%90%E5%8A%9F%E8%B7%AF%E5%81%9C%E8%BB%8A%E5%A0%B4/" target="_blank" rel="noopener" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ 成功路停車場</a>
+                <a href="https://share.google/b0QdE9nw07PkGjhkg" target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  成功店（Google Maps）</a>
+                <a href="https://data.zhupiter.com/oddt/16948142/%E6%88%90%E5%8A%9F%E8%B7%AF%E5%81%9C%E8%BB%8A%E5%A0%B4/"
+                  target="_blank" rel="noopener"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  成功路停車場</a>
               </div>
               <div class="parking-box">
                 <h4>停車建議</h4>
@@ -278,21 +449,27 @@
           </div>
         </div>
 
-      <!-- 總覽 & 備忘 -->
+        <!-- 總覽 & 備忘 -->
       </div>
 
       <div id="overview" class="tab-content hidden space-y-6">
         <div class="p-5 bg-white rounded-lg shadow-lg">
           <h2 class="text-2xl font-semibold text-gray-800 mb-4">預訂 & 費用總覽</h2>
           <p class="mb-2 text-gray-600">這部分是根據 "代辦事項.csv" 檔案整理的，方便你們快速核對已確認的項目和支出。</p>
-          <p class="text-sm text-gray-600">同行人數：<strong>5 人（租車）</strong></p>
           <ul class="space-y-3">
-            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span class="font-medium text-green-800">✔️ 住宿</span><span class="text-gray-700">$9,660 (全部)</span></li>
-            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span class="font-medium text-green-800">✔️ 租車</span><span class="text-gray-700">$5,940 (全部)</span></li>
-            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span class="font-medium text-green-800">✔️ 桌遊(包廂)訂位</span><span class="text-gray-700">$780 (全部)</span></li>
-            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span class="font-medium text-green-800">✔️ 好樂迪訂位</span><span class="text-gray-700">$352/4H (人)</span></li>
-
-            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span class="font-medium text-green-800">✔️ 晚餐（Simple Plan 咖啡小酒館）</span><span class="text-gray-700">$400–$600 (人)</span></li>
+            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span
+                class="font-medium text-green-800">✔️ 住宿</span><span class="text-gray-700">$9,660 (全部)</span></li>
+            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span
+                class="font-medium text-green-800">✔️ 租車</span><span class="text-gray-700">$5,940 (全部)</span></li>
+            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span
+                class="font-medium text-green-800">✔️ 桌遊(包廂)訂位</span><span class="text-gray-700">$780 (全部)</span></li>
+            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span
+                class="font-medium text-green-800">✔️ 好樂迪訂位</span><span class="text-gray-700">$352/4H (人)</span></li>
+            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span
+                class="font-medium text-green-800">✔️ 貓咖訂位</span><span class="text-gray-700">$100–$200 (人)</span></li>
+            <li class="flex justify-between items-center p-3 bg-green-50 rounded-md"><span
+                class="font-medium text-green-800">✔️ 晚餐（Simple Plan 咖啡小酒館）</span><span class="text-gray-700">$400–$600
+                (人)</span></li>
           </ul>
         </div>
 
@@ -326,20 +503,6 @@
                   <td class="px-3 py-2 text-right">$1,188</td>
                 </tr>
                 <tr class="border-b">
-                  <td class="px-3 py-2">桌遊（花🌸）</td>
-                  <td class="px-3 py-2 text-right">$780 / 全部</td>
-                  <td class="px-3 py-2 text-right">6</td>
-                  <td class="px-3 py-2 text-right">$780</td>
-                  <td class="px-3 py-2 text-right">$130</td>
-                </tr>
-                <tr class="border-b">
-                  <td class="px-3 py-2">KTV（花🌸＋嬰兒👶）</td>
-                  <td class="px-3 py-2 text-right">$352 / 4H / 人</td>
-                  <td class="px-3 py-2 text-right">7</td>
-                  <td class="px-3 py-2 text-right">$2,464</td>
-                  <td class="px-3 py-2 text-right">$352</td>
-                </tr>
-                <tr class="border-b">
                   <td class="px-3 py-2">貓咖（嬰兒👶）</td>
                   <td class="px-3 py-2 text-right">$100–$200 / 人</td>
                   <td class="px-3 py-2 text-right">6</td>
@@ -353,6 +516,21 @@
                   <td class="px-3 py-2 text-right">$2,400–$3,600</td>
                   <td class="px-3 py-2 text-right">$400–$600</td>
                 </tr>
+                <tr class="border-b">
+                  <td class="px-3 py-2">KTV（花🌸＋嬰兒👶）</td>
+                  <td class="px-3 py-2 text-right">$352 / 4H / 人</td>
+                  <td class="px-3 py-2 text-right">7</td>
+                  <td class="px-3 py-2 text-right">$2,464</td>
+                  <td class="px-3 py-2 text-right">$352</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="px-3 py-2">桌遊（花🌸）</td>
+                  <td class="px-3 py-2 text-right">$780 / 全部</td>
+                  <td class="px-3 py-2 text-right">6</td>
+                  <td class="px-3 py-2 text-right">$780</td>
+                  <td class="px-3 py-2 text-right">$130</td>
+                </tr>
+
               </tbody>
               <tfoot class="bg-gray-50">
                 <tr>
@@ -361,7 +539,8 @@
                 </tr>
               </tfoot>
             </table>
-            <p class="text-xs text-gray-500 mt-2">說明：$1,932 + $1,188 + $130 + $352 = $3,602；加上貓咖 $100–$200 與晚餐 $400–$600 ⇒ $4,102–$4,402。<br/>※ 目前<strong>未含</strong>餐飲與停車，若提供各點預計停留時數，我可把停車費也估進來。</p>
+            <p class="text-xs text-gray-500 mt-2">說明：$1,932 + $1,188 + $130 + $352 = $3,602；加上貓咖 $100–$200 與晚餐 $400–$600
+              ⇒ $4,102–$4,402。<br />※ 目前<strong>未含</strong>餐飲與停車，若提供各點預計停留時數，我可把停車費也估進來。</p>
           </div>
         </div>
 
@@ -379,7 +558,8 @@
               <h3 class="font-semibold text-gray-800 mb-2">總原則</h3>
               <ul class="list-disc list-inside space-y-1">
                 <li>住宿優先：若有 <span class="badge badge-free">免費</span> 車位，先停飯店。</li>
-                <li>市區景點：選一個 <span class="badge badge-paid">付費</span> 或 <span class="badge badge-underground">地下場</span> 當樞紐，步行/共享機車接駁。</li>
+                <li>市區景點：選一個 <span class="badge badge-paid">付費</span> 或 <span class="badge badge-underground">地下場</span>
+                  當樞紐，步行/共享機車接駁。</li>
                 <li>熱門時段（日落、夜市）：先停再玩，避免繞圈找位。</li>
               </ul>
             </div>
@@ -398,8 +578,10 @@
             <summary class="cursor-pointer text-sm text-gray-600">🔧 測試與診斷：彈窗/複製備援（可展開）</summary>
             <div class="dev-note mt-2">用下列按鈕驗證各種情況：</div>
             <div class="mt-3 flex flex-wrap gap-3">
-              <a id="test-link-open-ok" href="https://example.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">彈窗成功案例</a>
-              <a id="test-link-open-blocked" href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">彈窗被擋→觸發備援</a>
+              <a id="test-link-open-ok" href="https://example.com" target="_blank" rel="noopener noreferrer"
+                class="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">彈窗成功案例</a>
+              <a id="test-link-open-blocked" href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+                class="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">彈窗被擋→觸發備援</a>
               <button id="btn-popup-normal" class="btn btn-secondary">切到：彈窗允許</button>
               <button id="btn-popup-block" class="btn btn-secondary">切到：彈窗阻擋（模擬）</button>
               <button id="btn-clip-allow" class="btn btn-primary">切到：剪貼簿允許（模擬）</button>
@@ -409,7 +591,7 @@
           </details>
         </div>
       </div>
-    
+
       <!-- ===== Re-Add: 11/10 (一) 行程 ===== -->
       <div id="day-mon" class="tab-content hidden space-y-6">
         <div class="p-5 bg-white rounded-lg shadow-lg">
@@ -425,8 +607,14 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">SKRABUR 黑膠漢堡</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://www.google.com/maps/search/?api=1&query=SKRABUR%20%E9%BB%91%E8%86%A0%E6%BC%A2%E5%A0%A1%20%E5%8F%B0%E5%8D%97" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 Google Maps</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E6%AD%A3%E8%B7%AF%20%E5%9C%B0%E4%B8%8B%20%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ 中正路地下停車場</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=SKRABUR%20%E9%BB%91%E8%86%A0%E6%BC%A2%E5%A0%A1%20%E5%8F%B0%E5%8D%97"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  Google Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E6%AD%A3%E8%B7%AF%20%E5%9C%B0%E4%B8%8B%20%E5%81%9C%E8%BB%8A%E5%A0%B4"
+                  target="_blank" rel="noopener"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  中正路地下停車場</a>
               </div>
               <p class="text-sm text-gray-600">停車建議：或附近百貨公司停車場；尖峰建議先停再步行。</p>
             </div>
@@ -439,8 +627,13 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">跟花花玩桌遊</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://maps.app.goo.gl/DBWqE5hH5ZMaLQS19" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 Google Maps</a>
-                <a href="https://www.google.com/search?q=%E5%8F%B0%E5%8D%97%E7%81%AB%E8%BB%8A%E7%AB%99%20%E5%BE%8C%E7%AB%99%20%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ 火車站後站停車場</a>
+                <a href="https://maps.app.goo.gl/DBWqE5hH5ZMaLQS19" target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  Google Maps</a>
+                <a href="https://www.google.com/search?q=%E5%8F%B0%E5%8D%97%E7%81%AB%E8%BB%8A%E7%AB%99%20%E5%BE%8C%E7%AB%99%20%E5%81%9C%E8%BB%8A%E5%A0%B4"
+                  target="_blank" rel="noopener"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  火車站後站停車場</a>
               </div>
               <p class="text-sm text-gray-600">預訂資訊：已訂包廂（費用 $780/全部；7 人時加收人頭費 $130）。</p>
               <div class="mt-3 p-4 bg-yellow-50 rounded-lg text-sm text-gray-800">
@@ -462,9 +655,18 @@
             <div class="w-full sm:w-4/5">
               <h2 class="text-xl font-semibold text-gray-800 mb-3">點心時間</h2>
               <div class="flex flex-wrap gap-3 mb-3">
-                <a href="https://maps.app.goo.gl/XA5KkUnwszTRi81y7" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 Bula冷奶油咖椰吐司-台南總店</a>
-                <a href="https://www.google.com/search?q=%E5%8F%B0%E5%8D%97%E5%B8%82%E4%B8%AD%E8%A5%BF%E5%8D%80%E6%85%B6%E4%B8%AD%E8%A1%97114%E8%99%9F" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍 獻 圓可頌</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Times%20%E6%96%B0%E7%BE%8E%E8%A1%97%20%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️ Times 新美街</a>
+                <a href="https://www.google.com/search?q=%E5%8F%B0%E5%8D%97%E5%B8%82%E4%B8%AD%E8%A5%BF%E5%8D%80%E6%96%B0%E7%BE%8E%E8%A1%9718%E8%99%9F"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  bula 冷奶油+椰吐司</a>
+                <a href="https://www.google.com/search?q=%E5%8F%B0%E5%8D%97%E5%B8%82%E4%B8%AD%E8%A5%BF%E5%8D%80%E6%85%B6%E4%B8%AD%E8%A1%97114%E8%99%9F"
+                  target="_blank" rel="noopener noreferrer"
+                  class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-200 transition-all">📍
+                  獻 圓可頌</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Times%20%E6%96%B0%E7%BE%8E%E8%A1%97%20%E5%81%9C%E8%BB%8A%E5%A0%B4"
+                  target="_blank" rel="noopener"
+                  class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-green-200 transition-all">🅿️
+                  Times 新美街</a>
               </div>
               <p class="text-sm text-gray-600">停車建議：巷弄內小店，建議停大馬路邊再步行。</p>
             </div>
@@ -479,7 +681,7 @@
         </div>
       </div>
 
-      </main>
+    </main>
   </div>
 
   <div id="toast-root" class="toast" aria-live="polite" aria-atomic="true"></div>
@@ -559,7 +761,7 @@
           return false; // 模擬阻擋
         }
         const features = [
-          'popup=yes','toolbar=0','location=1','menubar=0','status=0','scrollbars=1','resizable=1','width=1200','height=800'
+          'popup=yes', 'toolbar=0', 'location=1', 'menubar=0', 'status=0', 'scrollbars=1', 'resizable=1', 'width=1200', 'height=800'
         ].join(',');
         let win = null;
         try {
@@ -644,4 +846,5 @@
     });
   </script>
 </body>
+
 </html>
